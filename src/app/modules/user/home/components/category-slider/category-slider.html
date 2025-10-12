@@ -1,0 +1,12 @@
+@if (catList?.length) {
+<owl-carousel-o [options]="customOptions">
+  @for (slide of catList; track slide._id) {
+  <ng-template carouselSlide [id]="slide._id">
+    <div>
+      <img class="h-[250px] w-full" [src]="slide.image" [alt]="slide.name" [title]="slide.name" />
+      <h1 class="text-xl font-bold text-red-600">{{slide.name}}</h1>
+    </div>
+  </ng-template>
+  }
+</owl-carousel-o>
+} @else { }

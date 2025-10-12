@@ -1,0 +1,54 @@
+<div class="max-w-2xl border border-gray-200 mx-auto rounded my-10 p-8">
+  <h1 class="text-red-600 font-bold text-2xl">Login</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="getValue()">
+    <!-- Name -->
+    <div class="p-4">
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
+        >email</label
+      >
+      <input type="email"
+        formControlName="email"
+        id="email"
+        class="bg-gray-50 border border-gray-300 p-4 text-gray-600 text-sm rounded-lg focus:ring-gray-200 focus:border-gray-200 focus:outline-none block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-200 dark:focus:border-red-200"
+        placeholder="qwee@gmail.com"
+        required
+      />
+
+      <!-- Error Box for Name -->
+<app-erro-messages [control]="loginForm.get('email')"></app-erro-messages>
+    </div>
+
+    <!-- Email -->
+    <div class="p-4">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
+        >Password</label
+      >
+      <input
+        formControlName="password"
+        type="password"
+        id="password"
+        class="bg-gray-50 border border-gray-300 p-4 text-gray-600 text-sm rounded-lg focus:ring-gray-200 focus:border-gray-200 focus:outline-none block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-200 dark:focus:border-red-200"
+        placeholder="password"
+        required
+      />
+      <app-erro-messages [control]="loginForm.get('email')"></app-erro-messages>
+    </div>
+
+   
+
+    <!-- Button -->
+    <button
+      class="rounded bg-red-700 hover:bg-red-700/80 transition-all duration-300 text-white py-3 px-8 mt-4"
+    >
+     Login
+    </button>
+    <a routerLink="/forget-password" class="text-red-700 ml-64">Forget Password ?</a>
+@if (errorMessage) {
+  <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+    {{errorMessage}}
+  </div>
+}
+  </form>
+</div>
+

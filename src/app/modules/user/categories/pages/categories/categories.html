@@ -1,0 +1,28 @@
+@if (categoryList) {
+  <section class="my-15 px-5">
+  <div
+    class="m-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  text-center gap-8 "
+  >
+    @for (category of categoryList; track $index) {
+        <app-category-card [category]="category"></app-category-card>
+     }
+  </div>
+</section>
+}@else {
+ <section class=" fixed inset-0 flex items-center justify-center z-50">
+  <div class="text-center">
+     <!-- Bars Loader -->
+<div class="flex items-end justify-center  mt-10">
+  <div class="w-2 h-6 bg-red-700 animate-[bounce_0.5s_infinite]"></div>
+  <div class="w-2 h-8 bg-red-600 animate-[bounce_0.5s_infinite_0.1s]"></div>
+  <div class="w-2 h-10 bg-red-500 animate-[bounce_0.5s_infinite_0.2s]"></div>
+  <div class="w-2 h-8 bg-red-400 animate-[bounce_0.5s_infinite_0.3s]"></div>
+  <div class="w-2 h-6 bg-red-300 animate-[bounce_0.5s_infinite_0.4s]"></div>
+</div>
+
+  </div>
+</section>
+
+
+   
+}

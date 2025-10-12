@@ -1,0 +1,32 @@
+<div
+  class="p-5 product group relative border border-white shadow shadow-gray-100 rounded-2xl h-full cursor-pointer overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-2 hover:shadow-lg hover:border hover:border-red-100"
+>
+ <i routerLink="/user/wishlist"
+      class="fa-regular fa-heart absolute top-3 right-3  border-red-500 text-red-500  p-2 cursor-pointer gap-6 "
+    ></i>
+  <div [routerLink]="['/user/product_details/',product.slug, product.id]">
+    <!-- ايقونة الفافوريت -->
+  
+ 
+    <img class="w-full my-5" [src]="product.imageCover" [alt]="product.title" />
+    <h4 class="text-red-600 mt-1">{{ product.category.name }}</h4>
+    <h1 class="font-bold line-clamp-1 text-gray-700">{{ product.title}}</h1>
+
+    <div class="flex justify-between   px-2 mt-2">
+      <span class="text-gray-600">{{ product.price |currency:'EUR'}}</span>
+      <span class="text-gray-600">    
+        <i class="fa-solid fa-star text-yellow-400"></i>
+        {{ product.ratingsAverage }}
+      </span>
+    </div>  
+
+    
+  </div>                          
+
+  <button
+   (click)="onAddtoCart()"
+    class="cursor-pointer btn px-3 py-3 w-[90%] mx-auto bg-red-500/80 text-white rounded opacity-0 group-hover:opacity-100 group-hover:translate-y-4 transition-all duration-500"
+  >
+    Add to Cart
+  </button>
+</div>

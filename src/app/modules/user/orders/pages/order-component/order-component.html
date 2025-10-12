@@ -1,0 +1,39 @@
+@if (orderList) {
+  <section class="mx-8 my-8 p-6">
+    <h1 class="text-3xl font-bold text-gray-600 mt-10">Orders List</h1>
+
+    <div class="flex justify-between items-center mt-6">
+      <button
+        routerLink="/user/products"
+        class="bg-red-700 text-white px-6 py-2 rounded-lg hover:bg-red-800 transition"
+      >
+        Back to Products
+      </button>
+    </div>
+
+    <!-- الحلقة الأولى: الطلبات -->
+    @for (order of orderList; track order._id) {
+      <div class="my-6 border border-gray-100 rounded-xl shadow-sm p-4 bg-white">
+        
+
+        <!-- ✅ الحلقة الثانية: عناصر الطلب -->
+        @for (item of order.cartItems; track item._id) {
+          <app-order-item [order]="item"></app-order-item>
+        }
+      </div>
+    }
+  </section>
+} @else {
+  <!-- Loader -->
+  <section class="fixed inset-0 flex items-center justify-center z-50 bg-white/80">
+    <div class="text-center">
+      <div class="flex items-end justify-center mt-10 space-x-1">
+        <div class="w-2 h-6 bg-red-700 animate-[bounce_0.5s_infinite]"></div>
+        <div class="w-2 h-8 bg-red-600 animate-[bounce_0.5s_infinite_0.1s]"></div>
+        <div class="w-2 h-10 bg-red-500 animate-[bounce_0.5s_infinite_0.2s]"></div>
+        <div class="w-2 h-8 bg-red-400 animate-[bounce_0.5s_infinite_0.3s]"></div>
+        <div class="w-2 h-6 bg-red-300 animate-[bounce_0.5s_infinite_0.4s]"></div>
+      </div>
+    </div>
+  </section>
+}

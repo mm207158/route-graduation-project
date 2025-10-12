@@ -1,0 +1,71 @@
+<nav class="shadow-[0_8px_40px_rgba(0,0,0,0.1)] bg-gray-50  w-full  z-50">
+  <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center py-2 px-8 font-bold text-gray-500">
+
+    <!-- Logo + Bar Icon -->
+    <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0 mr-10">
+      <a routerLink="/user/home" class="flex items-center" routerLinkActive="text-red-600">
+        <img src="assets/images/LOGO.jpg" alt="logo" class="h-10 rounded" />
+        <h1 class="text-red-700 font-bold text-2xl pacifico-regular ml-2">Hommy</h1>
+      </a>
+
+      <!-- Bar Icon -->
+      <button (click)="mobileToggle()" class="md:hidden text-3xl text-gray-500">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Main Links -->
+    <div 
+      [class.hidden]="!isOpen" 
+      class="transition-all duration-300 flex flex-col border border-gray-100 rounded-xl p-2 w-full md:flex md:flex-row md:w-auto md:border-0 md:rounded-none md:p-0 text-center md:text-left md:ml-4">
+      
+      @if (isLogin == true) {
+        <ul class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+          <li><a routerLink="/user/home" routerLinkActive="text-red-600"
+              class="hover:text-red-600 transition-colors duration-150">Home</a></li>
+          <li><a routerLink="/user/products" routerLinkActive="text-red-600"
+              class="hover:text-red-600 transition-colors duration-150">Products</a></li>
+          <li><a routerLink="/user/categories" routerLinkActive="text-red-600"
+              class="hover:text-red-600 transition-colors duration-150">Categories</a></li>
+          <li><a routerLink="/user/brands" routerLinkActive="text-red-600"
+              class="hover:text-red-600 transition-colors duration-150">Brands</a></li>
+        </ul>
+      }
+    </div>
+
+    <!-- Auth Links -->
+    <div 
+      [class.hidden]="!isOpen" 
+      class="transition-all duration-300 md:flex md:flex-row flex-col border border-gray-100 rounded-xl p-2 w-full md:w-auto mt-4 md:mt-0 md:border-0 md:rounded-none md:p-0 text-center md:text-left md:ml-auto">
+      
+      <ul class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+        @if (isLogin == false) {
+          <li><a routerLink="/login" routerLinkActive="text-red-600"
+              class="hover:text-red-600 transition-colors duration-150">Login</a></li>
+          <li><a routerLink="/register" routerLinkActive="text-red-600"
+              class="hover:text-red-600 transition-colors duration-150">Register</a></li>
+        } @else {
+          <li>
+            <a routerLink="/user/cart" routerLinkActive="text-red-700"
+              class="hover:text-red-600 transition-colors duration-150">
+              <i class="fa-solid fa-cart-shopping text-3xl"></i>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/user/wishlist" routerLinkActive="text-red-700"
+              class="hover:text-red-600 transition-colors duration-150">
+              <i class="fa-solid fa-heart text-3xl"></i>
+            </a>
+          </li>
+          <li>
+            <a (click)="logout()" routerLinkActive="text-red-600"
+              class="hover:text-red-600 transition-colors duration-150 cursor-pointer">
+              Logout
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+  </div>
+</nav>

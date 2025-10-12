@@ -1,0 +1,56 @@
+<!-- Footer like the image — requires Tailwind CSS -->
+<section class="bg-black/80 text-white">
+  <div class="max-w-7xl mx-auto py-8">
+    <!-- Top: title + input -->
+    <div class="md:flex md:items-center md:justify-between">
+      <div class="md:flex-1">
+        <h2 class="text-2xl font-semibold text-white">Get the FreshCart app</h2>
+        <p class="text-sm text-white mt-1">We will send you a link, open it on your phone to download the app.</p>
+      </div>
+
+      <form class="mt-5 md:mt-0 md:w-1/2 lg:w-2/5">
+        <div class="flex items-center gap-3">
+          <input
+            type="email"
+            placeholder="Email .."
+            class="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-red-400"
+          />
+          <button type="submit" class="px-5 py-3 rounded-md bg-red-600 text-white font-medium shadow-sm hover:bg-red-700">
+            Share App Link
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 my-6"></div>
+
+    <!-- Bottom row: payment partners left, app badges right -->
+    <div class="md:flex md:items-center md:justify-between">
+      <!-- Left: payment partners -->
+      <div class="flex items-center gap-4">
+        <span class="text-sm text-white mr-2 hidden sm:inline">Payment Partners</span>
+
+        <!-- Replace these img src with your real logos (small icons) -->
+        <img src="assets/images/amazon-pay.png" alt="amazon pay" class="h-5 object-contain" />
+        <img src="assets/images/American-Express-Color.png" alt="amex" class="h-5 object-contain" />
+        <img src="assets/images/mastercard.webp" alt="mastercard" class="h-5 object-contain" />
+        <img src="assets/images/paypal.png" alt="paypal" class="h-5 object-contain" />
+      </div>
+
+      <!-- Right: text + store badges -->
+      <div class="flex items-center gap-4 mt-4 md:mt-0">
+        <p class="text-sm text-white whitespace-nowrap hidden sm:block">Get deliveries with FreshCart</p>
+
+        <!-- App store badges — replace src with real badge images -->
+        <a href="#" class="inline-block">
+          <img src="assets/images/get-apple-store.png" alt="App Store" class="h-9 object-contain" />
+        </a>
+        <a href="#" class="inline-block">
+          <img src="assets/images/get-google-play.png" alt="Google Play" class="h-9 object-contain" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

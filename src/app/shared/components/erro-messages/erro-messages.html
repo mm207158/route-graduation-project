@@ -1,0 +1,23 @@
+ @if (control?.errors&&control?.touched&&!control?.getError('misMatch')) {
+      <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+        <ul class="list-disc list-inside text-sm text-red-500 space-y-1">
+          @if (control?.getError('required')) {
+          <li>This input is required</li>
+          } @if (control?.getError('minlength')) {
+          <li>This input must be at least 2 characters long</li>
+          } @if (control?.getError('maxlength')) {
+          <li>This input must not be excced 20 characters</li>
+          }
+           @if (control?.getError('email')) {
+          <li>Please Enter a valid email adress</li>
+          }
+           @if (control?.getError('pattern')) {
+          <li>Custom field should matach the pattern</li>
+          }
+          
+         
+        </ul>
+      </div>
+      }
+
+     
