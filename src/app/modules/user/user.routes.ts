@@ -16,7 +16,7 @@ export const User_Routes: Routes = [
        
       ...Products_Routes,
       ...Home_Routes,
-      ...Cart_Routes,
+      ...Cart_Routes, 
       ...Categories_Routes,
       ...Brands_Routes,
       ...WishList_Routes,

@@ -1,25 +1,25 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './core/guard/auth-guard';
-
 
 
 export const routes: Routes = [
+  // 👇 الجزء الخاص بالـ auth
   {
     path: '',
-    loadChildren:()=>import('./modules/auth/auth.routes').then((m)=>m.Auth_Routes)
+    loadChildren: () =>
+      import('./modules/auth/auth.routes').then((m) => m.Auth_Routes),
   },
+
+  // 👇 الجزء الخاص بالـ user بعد تسجيل الدخول
   {
     path: '',
     loadChildren: () =>
       import('./modules/user/user.routes').then((m) => m.User_Routes),
-    canActivate:[authGuard]
+   
   },
-  
+
+  // 👇 عشان أي مسار مش معروف يروح للّوجين
   {
     path: '**',
-    loadComponent: () =>
-      import('./shared/components/not-found-component/not-found-component').then(
-        (c) => c.NotFoundComponent
-      ),title:'not found'
+    redirectTo: 'login',
   },
 ];

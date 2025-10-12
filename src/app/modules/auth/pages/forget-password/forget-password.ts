@@ -35,7 +35,7 @@ export class ForgetPassword {
         console.log('API Response:', res);
         this.statusMsg = res.statusMsg;
         this.message = res.message;
-        this.router.navigate(['/verifiaction'])
+        this.router.navigate(['/verification'])
         
       },
       error: (err) => {
