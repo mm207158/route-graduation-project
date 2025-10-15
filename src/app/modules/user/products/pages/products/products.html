@@ -1,11 +1,24 @@
 @if (productList) {
 <section class="my-15 px-5">
+  <input
+    type="search"
+    [(ngModel)]="text"
+    id="search"
+    class="bg-gray-50 border border-gray-300 p-4 m-auto text-gray-600 text-sm rounded-lg focus:ring-gray-200 focus:border-gray-200 focus:outline-none block w-1/2 mb-20 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-200 dark:focus:border-red-200"
+    placeholder="search"
+    required
+  />
   <div
     class="m-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 text-center gap-8"
   >
     @for (product of productList| paginate: { id: 'foo', itemsPerPage: pageSize, currentPage: p,
-    totalItems: total }|search:"logo"; track $index) {
-    <app-product-card (addToCart)="addtoCart($event)" [product]="product"></app-product-card>
+    totalItems: total }|search:text; track $index) {
+    <app-product-card
+      (addToCart)="addtoCart($event)"
+      (addToWishList)="addToWishList($event)"
+      [product]="product"
+       [isInWishlist]="wishlistIds.includes(product._id)"
+    ></app-product-card>
     }
   </div>
   <pagination-controls

@@ -1,1 +1,40 @@
-<p>whis-list works!</p>
+@if (isLoaded) {
+<section class="mx-8 px-4 pt-4 my-8 p-4">
+  <h1 class="text-3xl font-bold text-gray-600 mt-10">Shop WishList</h1>
+
+  <div class="flex justify-between items-center mt-6">
+    <button
+      routerLink="/user/products"
+      class="bg-red-700 text-white px-6 py-2 rounded-lg hover:bg-red-800 transition"
+    >
+      Continue Shopping
+    </button>
+
+    <button
+      (click)="addAllToCart()"
+      class="bg-blue-900 text-white px-7 py-2 rounded-lg hover:bg-blue-950 transition"
+    >
+      Add All To Cart
+    </button>
+  </div>
+
+  @for (item of wishlistData; track item._id) {
+    <app-wishlist-item
+      [product]="item"
+      (removeItem)="removeItem($event)"
+    ></app-wishlist-item>
+  }
+</section>
+} @else {
+<section class="fixed inset-0 flex items-center justify-center z-50">
+  <div class="text-center">
+    <div class="flex items-end justify-center mt-10">
+      <div class="w-2 h-6 bg-red-700 animate-[bounce_0.5s_infinite]"></div>
+      <div class="w-2 h-8 bg-red-600 animate-[bounce_0.5s_infinite_0.1s]"></div>
+      <div class="w-2 h-10 bg-red-500 animate-[bounce_0.5s_infinite_0.2s]"></div>
+      <div class="w-2 h-8 bg-red-400 animate-[bounce_0.5s_infinite_0.3s]"></div>
+      <div class="w-2 h-6 bg-red-300 animate-[bounce_0.5s_infinite_0.4s]"></div>
+    </div>
+  </div>
+</section>
+}

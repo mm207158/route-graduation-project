@@ -1,20 +1,27 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductInterface } from '../../../../../core/models/product-interface';
 import { RouterLink } from '@angular/router';
-import { CurrencyPipe, SlicePipe, TitleCasePipe } from '@angular/common';
-
+import { CommonModule, CurrencyPipe } from '@angular/common'; // ✅ أضيفي CommonModule هنا
 
 @Component({
   selector: 'app-product-card',
-  imports: [RouterLink,  CurrencyPipe, ],
+  standalone: true,
+  imports: [RouterLink, CurrencyPipe, CommonModule], // ✅ أضيفي CommonModule هنا
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',
 })
 export class ProductCard {
   @Input() product: ProductInterface = {} as ProductInterface;
-  @Output() addToCart: EventEmitter<string> = new EventEmitter<string>();
+  @Input() isInWishlist: boolean = false; // ✅ أضفنا الحالة
+
+  @Output() addToCart = new EventEmitter<string>();
+  @Output() addToWishList = new EventEmitter<string>();
 
   onAddtoCart() {
     this.addToCart.emit(this.product._id);
+  }
+
+  onAddtoWishList() {
+    this.addToWishList.emit(this.product._id);
   }
 }
